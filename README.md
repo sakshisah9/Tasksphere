@@ -92,16 +92,17 @@ Frontend runs at `http://localhost:5173` or the next available Vite port; backen
 2. Set the build command:
 
    ```bash
-   npm install --prefix backend
+   npm install
    ```
 
 3. Set the start command:
 
    ```bash
-   npm start --prefix backend
+   npm start
    ```
 
 4. Add environment variables from `backend/.env.production.example`.
+5. Set the root directory to `backend` if you are deploying from the monorepo root.
 
 ### Vercel Frontend
 
@@ -109,6 +110,7 @@ Frontend runs at `http://localhost:5173` or the next available Vite port; backen
 2. Set the root directory to `frontend`.
 3. Add environment variables from `frontend/.env.production.example`.
 4. Deploy after the Render API URL is ready.
+5. `frontend/vercel.json` enables client-side routing refreshes to resolve to `index.html`.
 
 ### Attachments
 
