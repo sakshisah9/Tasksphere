@@ -103,7 +103,9 @@ Frontend runs at `http://localhost:5173` or the next available Vite port; backen
 
 4. Add environment variables from `backend/.env.production.example`.
 5. Set the root directory to `backend` if you are deploying from the monorepo root.
-6. For this deployment, use `CLIENT_URL=https://tasksphere-59tm.vercel.app`.
+6. In Render, set `MONGO_URI` to your MongoDB Atlas connection string, not `localhost`.
+7. For this deployment, use `CLIENT_URL=https://tasksphere-59tm.vercel.app`.
+8. Also set `JWT_SECRET` and `NODE_ENV=production` in Render.
 
 ### Vercel Frontend
 
