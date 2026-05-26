@@ -23,10 +23,20 @@ export default function App() {
   const [taskModal, setTaskModal] = useState({ open: false, task: null });
   const [profileOpen, setProfileOpen] = useState(false);
   const [projectDetailsOpen, setProjectDetailsOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem("task_manager_theme") || "light");
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") {
+      return "light";
+    }
+
+    return localStorage.getItem("task_manager_theme") || "light";
+  });
   const [toasts, setToasts] = useState([]);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("task_manager_theme", theme);
   }, [theme]);

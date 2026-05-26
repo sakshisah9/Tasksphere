@@ -3,13 +3,27 @@ import { api, setAuthToken } from "../services/api";
 
 const AuthContext = createContext(null);
 
-const stored = JSON.parse(localStorage.getItem("task_manager_auth") || "null");
+function readStoredAuth() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  try {
+    return JSON.parse(localStorage.getItem("task_manager_auth") || "null");
+  } catch {
+    return null;
+  }
+}
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(stored?.token || "");
-  const [user, setUser] = useState(stored?.user || null);
+  const [token, setToken] = useState(() => readStoredAuth()?.token || "");
+  const [user, setUser] = useState(() => readStoredAuth()?.user || null);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     setAuthToken(token);
     if (token && user) {
       localStorage.setItem("task_manager_auth", JSON.stringify({ token, user }));
