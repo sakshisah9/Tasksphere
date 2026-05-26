@@ -103,6 +103,7 @@ Frontend runs at `http://localhost:5173` or the next available Vite port; backen
 
 4. Add environment variables from `backend/.env.production.example`.
 5. Set the root directory to `backend` if you are deploying from the monorepo root.
+6. For this deployment, use `CLIENT_URL=https://tasksphere-59tm.vercel.app`.
 
 ### Vercel Frontend
 
@@ -111,6 +112,7 @@ Frontend runs at `http://localhost:5173` or the next available Vite port; backen
 3. Add environment variables from `frontend/.env.production.example`.
 4. Deploy after the Render API URL is ready.
 5. `frontend/vercel.json` enables client-side routing refreshes to resolve to `index.html`.
+6. For this deployment, use `VITE_API_URL=https://tasksphere-backend-gk78.onrender.com/api` and `VITE_SOCKET_URL=https://tasksphere-backend-gk78.onrender.com`.
 
 ### Attachments
 
